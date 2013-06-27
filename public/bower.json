@@ -1,0 +1,11 @@
+{
+    "name": "blog-sample",
+    "version": "0.0.1",
+    "dependencies": {
+        "jquery": "~1.9.1",
+        "underscore": "~1.4.4",
+        "backbone": "~1.0.0",
+        "marionette": "~1.0.3",
+        "bootstrap": "http://twitter.github.io/bootstrap/assets/bootstrap.zip"
+    }
+}

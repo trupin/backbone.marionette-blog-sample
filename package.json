@@ -1,0 +1,19 @@
+{
+    "name": "blog-sample",
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "*",
+        "express-namespace": "*",
+        "underscore": "*",
+        "async": "*",
+        "mongodb": "*",
+        "socket.io": "*"
+    },
+    "engines": {
+        "node": "0.10.6"
+    },
+    "script": {
+    	"start": "cd public && bower install && cd .. && node server.js"
+    }
+}
+
