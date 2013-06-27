@@ -2,6 +2,10 @@
     "name": "blog-sample",
     "version": "0.0.1",
     "dependencies": {
+        "json2": "*",
+        "handlebars": "~1.0.0",
+        "backbone.wreqr": "~0.2.0",
+        "backbone.babysitter": "~0.0.6",
         "jquery": "~1.9.1",
         "underscore": "~1.4.4",
         "backbone": "~1.0.0",
