@@ -5,7 +5,6 @@
  */
 
 var express = require('express');
-require('express-namespace');
 
 // exports the application server
 var app = exports.app = express();
@@ -16,8 +15,10 @@ app.configure(function () {
     app.use(express.bodyParser());
 });
 
-// applying the routes
-require('./routes');
+require('./core').run(app, function (err) {
+    if (err) throw err;
 
-app.listen(3000);
-console.log('Server launched at "http://localhost:3000"');
+    app.listen(3000);
+    console.log('Server launched at "http://localhost:3000"');
+});
+

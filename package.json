@@ -2,6 +2,7 @@
     "name": "blog-sample",
     "version": "0.0.1",
     "dependencies": {
+        "eventemitter2": "*",
         "express": "*",
         "express-namespace": "*",
         "underscore": "*",
