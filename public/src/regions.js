@@ -10,4 +10,3 @@ app.regions = {};
 app.regions.Main =  Backbone.Marionette.Region.extend({
     el: "#content"
 });
-

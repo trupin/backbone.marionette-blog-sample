@@ -4,12 +4,26 @@
  * Time: 4:53 PM
  */
 
+var async = require('async');
+
 var Module = require('../lib/module.js').Module,
     Articles = require('./modules.js').Articles;
 
+var persistence = require('../lib/persistence.js');
+
+/**
+ * Setting up the database name
+ * @type {string}
+ */
+persistence.database.name = 'blog-sample';
+
 exports.run = function (app, callback) {
-
-    var articles = Module.register('articles', Articles, { app: app });
-
-    callback(null);
+    async.waterfall([
+        function (next) {
+            persistence.initDatabase(next);
+        },
+        function (next) {
+            Module.register('articles', Articles, { app: app }, next)
+        }
+    ], callback);
 };
