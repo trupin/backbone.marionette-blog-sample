@@ -23,7 +23,7 @@ exports.run = function (app, callback) {
             persistence.initDatabase(next);
         },
         function (next) {
-            Module.register('articles', Articles, { app: app }, next)
+            Module.register('articles', Articles, { app: app }, next);
         }
     ], callback);
 };

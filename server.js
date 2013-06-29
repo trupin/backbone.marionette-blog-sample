@@ -16,7 +16,7 @@ app.configure(function () {
 });
 
 require('./core').run(app, function (err) {
-    if (err) throw err;
+    if (err) return console.log(err);
 
     app.listen(3000);
     console.log('Server launched at "http://localhost:3000"');

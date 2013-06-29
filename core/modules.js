@@ -19,7 +19,7 @@ exports.Articles = function (options) {
 
 util.inherits(exports.Articles, Module);
 
-exports.Articles.prototype.initialize = function (options, callback) {
+exports.Articles.prototype.initialize = function (__, callback) {
     async.waterfall(tools.binded([
         function (next) {
             this.collection = new Articles();
@@ -40,10 +40,14 @@ exports.Articles.prototype.initialize = function (options, callback) {
         function (model, next) {
             this.model = model;
             console.log(this.model.toJSON());
-            this.collection.get(this.model.storedData._id, next);
+            this.collection.get(this.model.get('id'), next);
         },
         function (model, next) {
             console.log(model.toJSON(), model.created);
+            this.model.delete(next);
+        },
+        function (next) {
+            this.collection.get(this.model.get('id'), next);
         }
     ], this), callback);
 };
