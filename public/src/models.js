@@ -6,5 +6,3 @@
 
 var app = app || {};
 app.models = {};
-
-app.models.Article = Backbone.Model.extend({});

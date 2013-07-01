@@ -7,18 +7,31 @@
 var express = require('express');
 
 // exports the application server
-var app = exports.app = express();
+var app = exports.app = global.app = express();
+global._root = __dirname;
+global._errors = require('./lib/error.js');
 
 // set up the server configuration
 app.configure(function () {
-    app.use(express.static(__dirname + '/public'));
+    app.set('port', process.env.port || 3000);
+    app.use(express.favicon());
+    app.use(express.logger('dev'));
+    app.use(express.cookieParser());
+    app.use(express.cookieSession({ secret: 'secret'}));
     app.use(express.bodyParser());
+    app.use(express.static(__dirname + '/public'));
 });
 
-require('./core').run(app, function (err) {
+app.configure('development', function () {
+    app.use(express.errorHandler());
+});
+
+require('./lib/persistence.js').database.name = 'blog-sample';
+
+require('./core/modules').run(function (err) {
     if (err) return console.log(err);
 
-    app.listen(3000);
-    console.log('Server launched at "http://localhost:3000"');
+    app.listen(app.get('port'));
+    console.log('Server launched at "http://localhost:' + app.get('port') + '"');
 });
 

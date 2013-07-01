@@ -7,6 +7,3 @@
 var app = app || {};
 app.collections = {};
 
-app.collections.Articles = Backbone.Collection.extend({
-    model: app.models.Article
-});

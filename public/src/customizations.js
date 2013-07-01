@@ -11,13 +11,19 @@
  */
 Backbone.Marionette.TemplateCache.prototype.loadTemplate = function (templateId) {
     if (!templateId) return '';
-    var $t = $(templateId);
-    if ($t.length)
-        return $t.html();
-    var template = '';
-    $.ajax('/templates/' + templateId.replace('#', '').replace('-template', '') + '.html', { async: false })
-        .done(function (data) { template = data; });
-    return template;
+
+    if (_.isArray(templateId)) {
+        var template = '';
+        templateId = '/modules/' + templateId[0] + '/html/' + templateId[1] + '.html';
+        $.ajax(templateId, { async: false }).done(function (data) { template = data; });
+        return template;
+    }
+    else if (_.isString(templateId)) {
+        var $t = $(templateId);
+        if ($t.length)
+            return $t.html();
+    }
+    return '';
 };
 
 /**
