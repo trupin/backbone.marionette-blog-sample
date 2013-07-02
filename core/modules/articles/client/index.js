@@ -49,9 +49,13 @@ app.modules.articles = function (region) {
         },
         initialize: function () {
             this.collection.fetch();
+            app.core.vent.on('search:articles:results', _.bind(this.onSearchArticlesResults, this));
         },
         appendHtml: function (collectionView, itemView) {
             collectionView.ui.list.append(itemView.el);
+        },
+        onSearchArticlesResults: function (results) {
+            console.log(results);
         }
     });
 

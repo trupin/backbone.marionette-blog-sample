@@ -17,7 +17,13 @@ app.core.addRegions({
 });
 
 app.core.addInitializer(function () {
-    app.modules.navigation(app.core.header);
+    app.setHandlers(this);
+});
+
+app.core.addInitializer(function () {
+    var navigation = app.modules.navigation(app.core.header);
+    app.modules.search(navigation.rm.get('search'));
+
     app.modules.articles(app.core.center);
 });
 

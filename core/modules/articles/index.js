@@ -14,6 +14,8 @@ var Module = require(_root + '/lib/module.js').Module,
     Collection = require(_root + '/lib/persistence.js').Collection,
     Model = require(_root + '/lib/persistence.js').Model;
 
+var SearchResponse = require('../search').Response;
+
 // ---- Models ----
 var Article = function (data, options) {
     Model.call(this, data, options);
@@ -43,6 +45,21 @@ exports.Module.prototype.name = 'articles';
 exports.Module.prototype.initialize = function (__, callback) {
     this.collection = new Articles();
     this.collection.initialize(callback);
+};
+
+exports.Module.prototype.search = function (query, callback) {
+    this.collection.find(query.get('params'), query.get('options')).toArray(function (err, articles) {
+        if (err) return callback(err);
+        try {
+            callback(null, {
+                items: articles || [],
+                count: articles.length,
+                total: articles.length
+            });
+        } catch (e) {
+            callback(e);
+        }
+    });
 };
 
 exports.Module.prototype.$getArticle = {

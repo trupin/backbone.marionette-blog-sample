@@ -8,7 +8,8 @@ var async = require('async'),
     fs = require('fs');
 
 var Module = require('../../lib/module.js').Module,
-    Articles = require('./articles').Module;
+    Articles = require('./articles').Module,
+    Search = require('./search').Module;
 
 var persistence = require('../../lib/persistence.js');
 
@@ -28,6 +29,9 @@ exports.run = function (callback) {
     async.waterfall([
         function (next) {
             persistence.initDatabase(next);
+        },
+        function (next) {
+            Module.register('search', Search, next);
         },
         function (next) {
             Module.register('articles', Articles, next);

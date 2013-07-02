@@ -12,6 +12,12 @@ app.modules.navigation = function (region) {
 
     var Module = app.core.module(name, function (Module) {
 
+        Module.rm = new Marionette.RegionManager();
+
+        Module.rm.addRegions({
+            search: 'div.search'
+        });
+
         Module.addInitializer(function () {
             region.show(new Module.views.Navigation());
         });
@@ -66,4 +72,5 @@ app.modules.navigation = function (region) {
         }
     });
 
+    return Module;
 };
