@@ -17,6 +17,7 @@ app.core.addRegions({
 });
 
 app.core.addInitializer(function () {
+    app.modules.navigation(app.core.header);
     app.modules.articles(app.core.center);
 });
 

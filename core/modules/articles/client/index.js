@@ -11,9 +11,6 @@ app.modules.articles = function (region) {
     var name = 'articles';
 
     var Module = app.core.module(name, function (Module) {
-
-        Module.rm = new Marionette.RegionManager();
-
         // ---- Initializers ----
         Module.addInitializer(function () {
             var articlesView = new Module.views.ArticleList();

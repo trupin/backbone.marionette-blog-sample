@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Blog sample</title>
     <!-- CSS dependencies -->
-    <link rel="stylesheet" href="components/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="components/bootstrap/css/bootstrap-responsive.css">
-    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="../components/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../components/bootstrap/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="../base.css">
 </head>
 <body>
 
@@ -21,8 +21,6 @@
     </div>
 </section>
 <footer></footer>
-
-<!-- TODO make this index a template in order to load the resources dynamically -->
 
 <!-- JS Libraries -->
 <script type="text/javascript" src="components/jquery/jquery.js"></script>
@@ -42,7 +40,8 @@
 <script type="text/javascript" src="src/views.js"></script>
 <script type="text/javascript" src="src/modules.js"></script>
 
-<script type="text/javascript" src="modules/articles/index.js"></script>
+<!-- Module dependencies -->
+{{#modulesJs}}{{/modulesJs}}
 
 <script type="text/javascript" src="src/app.js"></script>
 

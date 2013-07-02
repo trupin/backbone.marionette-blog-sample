@@ -41,36 +41,8 @@ util.inherits(exports.Module, Module);
 exports.Module.prototype.name = 'articles';
 
 exports.Module.prototype.initialize = function (__, callback) {
-    async.waterfall(tools.binded([
-        function (next) {
-            this.collection = new Articles();
-            this.collection.initialize(next);
-        },
-//        function (next) {
-//            this.collection.post({
-//                toto: true
-//            }, next);
-//        },
-//        function (model, next) {
-//            this.model = model;
-//            console.log(this.model.toJSON());
-//            this.model.put({
-//                toto: false
-//            }, next);
-//        },
-//        function (model, next) {
-//            this.model = model;
-//            console.log(this.model.toJSON());
-//            this.collection.get(this.model.get('id'), next);
-//        },
-//        function (model, next) {
-//            console.log(model.toJSON(), model.created);
-//            this.model.delete(next);
-//        },
-//        function (next) {
-//            this.collection.get(this.model.get('id'), next);
-//        }
-    ], this), callback);
+    this.collection = new Articles();
+    this.collection.initialize(callback);
 };
 
 exports.Module.prototype.$getArticle = {

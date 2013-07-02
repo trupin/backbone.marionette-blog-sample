@@ -8,13 +8,11 @@
         "underscore": "*",
         "async": "*",
         "mongodb": "*",
-        "socket.io": "*"
+        "socket.io": "*",
+        "hbs": "*"
     },
     "engines": {
         "node": "0.10.6"
-    },
-    "script": {
-    	"start": "cd public && bower install && cd .. && node server.js"
     }
 }
 

@@ -5,7 +5,7 @@
  */
 
 var async = require('async'),
-    path = require('path');
+    fs = require('fs');
 
 var Module = require('../../lib/module.js').Module,
     Articles = require('./articles').Module;
